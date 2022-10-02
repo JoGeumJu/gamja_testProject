@@ -1,12 +1,12 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react';
+import React, {useState, useRef} from 'react';
 import styled from 'styled-components';
 
 // styledComponents
-const InputOutputDiv = styled.div`
+const Wrapper = styled.div`
     margin: 12px;
 
     box-shadow: 3px 3px 10px grey;
-    border-radius:10px;
+    border-radius:10px; 
 `;
 
 const Output = styled.div`
@@ -81,7 +81,7 @@ function InputOutput(props){
         scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     };
     const onEnter = (e) => {
-        if(e.key=='Enter' && e.target.value!=""){
+        if(e.key==='Enter' && e.target.value!==""){
             onChangeInput(e);
             onChangeOutput(e);
             setContent('');
@@ -93,12 +93,12 @@ function InputOutput(props){
     };
 
     return (
-        <InputOutputDiv>
+        <Wrapper>
             <Output name="outputBox" id="ChatRoom" value={content} ref={scrollRef}>
                 {contents.map((content, index) => (<P key={index}>{content}</P>))}
             </Output>
             <Input name="inputBox" placeholder="입력해주세요." value={content} onChange={onChangeInput} onKeyPress={onEnter}/>
-        </InputOutputDiv>
+        </Wrapper>
     );
 }
 
